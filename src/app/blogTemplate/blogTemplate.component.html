@@ -1,0 +1,23 @@
+<div class="blog" *ngFor="let blog of blogInfo">
+  <div class="blog__part1">
+    <img class="blog__img" [src]="blog.photo_url" alt="">
+  </div>
+  <div class="blog__part2">
+    <h2 class="blog__title">{{blog.title}}</h2>
+    <p class="blog__desc">{{blog.description}}</p>
+    <div class="blog__categoery">
+      <span class="blog__cate">{{blog.category}}</span>
+    </div>
+    <div class="blog__dates">
+      <div class="blog__date">
+        <span>Created on : </span>
+        <span>{{blog.created_at}}</span>
+      </div>
+      <div class="blog__date">
+        <span>Updated on : </span>
+        <span>{{blog.updated_at}}</span>
+      </div>
+    </div>
+    <a class="blog__link" [routerLink]="[blog.user_id]">View more</a>
+  </div>
+</div>

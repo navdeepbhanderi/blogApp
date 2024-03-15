@@ -1,0 +1,55 @@
+<app-error (event)="onEvent()" *ngIf="error" [error]="error"></app-error>
+<div class="container">
+  <div class="container__form">
+    <h1 class="container__title">Welcome to snappy</h1>
+    <h2 class="container__title2">Signup here</h2>
+    <form #form="ngForm" (ngSubmit)="getFormData(form)">
+      <div class="field">
+        <label for="fname">First Name</label>
+        <input ngModel #fname="ngModel" required placeholder="Enter your first name" type="text" name="fname"
+          id="fname">
+        <span *ngIf="!fname.valid && (fname.touched || fname.dirty)" class="error">Please enter your first name</span>
+      </div>
+      <div class="field">
+        <label for="lname">Last Name</label>
+        <input ngModel #lname="ngModel" required placeholder="Enter your last name" type="text" name="lname" id="lname">
+        <span *ngIf="!lname.valid && (lname.touched || lname.dirty)" class="error">Please enter your last name</span>
+      </div>
+      <div class="field">
+        <label for="email">Email address</label>
+        <input pattern="^[^ ]+@[^ ]+\.[a-z]{2,3}$" ngModel #email="ngModel" required email
+          placeholder="Enter email address" type="email" name="email" id="email">
+        <span class="error" *ngIf="!email.valid && (email.touched || email.dirty)">
+          <p *ngIf="email.errors?.['required']">Please enter your email address</p>
+          <p *ngIf="email.errors?.['pattern']">Please enter valid email address</p>
+        </span>
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <div class="field__pass">
+          <input ngModel #pass="ngModel" required minlength="8" placeholder="Enter password"
+            [type]="path ? 'password' : 'text' " name="password" id="password">
+          <img (click)="checkPath()" class="eye" [src]="getPath()" />
+        </div>
+        <span class="error" *ngIf="!pass.valid && (pass.touched || pass.dirty)">
+          <p *ngIf="pass.errors?.['required']">Please enter your password</p>
+          <p *ngIf="pass.errors?.['minlength']">Please enter of 8 length</p>
+        </span>
+      </div>
+      <div class="field">
+        <button [ngClass]="{'invalid':!form.valid}" type="submit" class="btn btn-secondary btn--signup">
+          <span>Signup</span>
+          <span *ngIf="isLoading" class="lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </span>
+        </button>
+      </div>
+      <div class="field">
+        <p class="signinlink">Want to singIn <a routerLink="/signin">Singin</a></p>
+      </div>
+    </form>
+  </div>
+</div>

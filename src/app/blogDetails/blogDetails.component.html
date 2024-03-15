@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="blogdetails">
+    <a class="backLink" routerLink="/blog">&larr; Back to blog</a>
+    <h2 class="blogdetails__title">{{currentBlog.title}}</h2>
+    <img [src]="currentBlog.photo_url" alt="" class="blogdetails__img">
+    <div>
+      <div #div [innerHtml]="currentBlog.content_html"></div>
+    </div>
+  </div>
+</div>

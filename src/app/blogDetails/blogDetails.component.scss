@@ -1,0 +1,22 @@
+.backLink {
+  text-decoration: none;
+  font-size: 1.4rem;
+}
+.blogdetails {
+  display: flex;
+  flex-direction: column;
+  max-width: 90rem;
+  margin: 0 auto;
+  &__img {
+    width: 70%;
+    margin: 3.2rem auto;
+    height: 30rem;
+    border-radius: 2.5rem;
+  }
+  &__title {
+    margin: 3.2rem 0 0 2.4rem;
+    font-size: 5.2rem;
+    color: var(--text-color);
+    text-align: center;
+  }
+}
