@@ -5,16 +5,23 @@ import { signinComponent } from './signin/signin.component';
 import { blogComponent } from './blog/blog.component';
 import { blogDetailsComponent } from './blogDetails/blogDetails.component';
 import { blogTemplateComponent } from './blogTemplate/blogTemplate.component';
+import { authGuard } from './shared/auth.guard';
+import { loginGuard } from './shared/loginGuard.guard';
 
 const routes: Routes = [
-  { path: 'signup', component: signupComponent },
-  { path: 'signin', component: signinComponent },
+  { path: 'signup', canActivate: [loginGuard], component: signupComponent },
+  { path: 'signin', canActivate: [loginGuard], component: signinComponent },
   {
     path: 'blog',
+    canActivate: [authGuard],
     component: blogComponent,
     children: [
-      { path: '', component: blogTemplateComponent },
-      { path: ':id', component: blogDetailsComponent },
+      { path: '', canActivate: [authGuard], component: blogTemplateComponent },
+      {
+        path: ':id',
+        canActivate: [authGuard],
+        component: blogDetailsComponent,
+      },
     ],
   },
   { path: '', redirectTo: 'signup', pathMatch: 'full' },

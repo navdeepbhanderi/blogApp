@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { authService } from '../shared/authService.service';
-import { Router } from 'express';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -18,7 +18,21 @@ export class signinComponent {
     this.error = null;
   }
   getFormData(form: NgForm) {
-    console.log(form);
+    if (!form.valid) {
+      return;
+    }
+    this.isLoading = true;
+    this.authService.signin(form.value.email, form.value.password).subscribe(
+      (response: any) => {
+        this.error = null;
+        this.isLoading = false;
+      },
+      (error: any) => {
+        this.error = error;
+        console.log(this.error);
+        this.isLoading = false;
+      }
+    );
   }
   checkPath() {
     this.path = !this.path;

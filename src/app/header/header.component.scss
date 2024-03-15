@@ -8,3 +8,20 @@ header {
   padding: 1rem 3.2rem;
   box-shadow: var(--header-box-shadow);
 }
+
+.button {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.name {
+  cursor: pointer;
+  color: var(--text-color);
+  font-size: 1.6rem;
+  padding-bottom: 1px;
+  border-bottom: 2px solid var(--text-color);
+  transition: transform 0.2s;
+  &:hover {
+    transform: translateY(-2px);
+  }
+}

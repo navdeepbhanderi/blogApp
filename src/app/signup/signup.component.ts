@@ -1,26 +1,29 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { authService } from '../shared/authService.service';
 import { Router } from '@angular/router';
-import { catchError, tap, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
 })
-export class signupComponent {
+export class signupComponent implements OnInit {
+  currentUser: any;
+
   @ViewChild('btn') button: any;
   path = true;
   constructor(private authService: authService, private router: Router) {}
   error = null;
+  ngOnInit(): void {
+    this.authService.user.next(this.currentUser);
+    this.router.navigate(['blog']);
+  }
 
   onEvent() {
     this.error = null;
   }
-
   isLoading = false;
-
   getFormData(form: NgForm) {
     if (!form.valid) {
       return;
@@ -35,8 +38,8 @@ export class signupComponent {
       )
       .subscribe(
         (response: any) => {
-          console.log(response);
           this.error = null;
+          this.router.navigate(['/blog']);
           this.isLoading = false;
         },
         (error: any) => {

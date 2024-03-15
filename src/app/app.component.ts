@@ -2,6 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { blogDataService } from './shared/blogData.service';
 import { of, take } from 'rxjs';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { authService } from './shared/authService.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,9 +14,12 @@ export class AppComponent implements OnInit {
   limit = 5;
   constructor(
     private blogDataService: blogDataService,
-    private router: Router
+    private router: Router,
+    private authService: authService
   ) {}
   ngOnInit() {
+    this.authService.autoLogin();
+
     this.blogDataService
       .getBlogData(this.offset, this.limit)
       .subscribe((data: any) => {
@@ -28,7 +32,7 @@ export class AppComponent implements OnInit {
   onScroll(event: any): void {
     if (this.router.routerState.snapshot.url === '/blog') {
       if (
-        window.innerHeight + window.scrollY + 1 >=
+        window.innerHeight + window.scrollY + 0.7 >=
         document.body.offsetHeight
       ) {
         this.offset++;

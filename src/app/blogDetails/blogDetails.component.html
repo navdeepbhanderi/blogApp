@@ -4,7 +4,7 @@
     <h2 class="blogdetails__title">{{currentBlog.title}}</h2>
     <img [src]="currentBlog.photo_url" alt="" class="blogdetails__img">
     <div>
-      <div #div [innerHtml]="currentBlog.content_html"></div>
+      <div [innerHtml]="currentBlog.content_html" addClasses></div>
     </div>
   </div>
 </div>

@@ -14,6 +14,8 @@ import { blogDataService } from './shared/blogData.service';
 import { HttpClientModule } from '@angular/common/http';
 import { blogTemplateComponent } from './blogTemplate/blogTemplate.component';
 import { errorComponent } from './errorComponent/errorComponent.component';
+import { authService } from './shared/authService.service';
+import { AddClassesDirective } from './blogDetails/blog.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,9 +29,10 @@ import { errorComponent } from './errorComponent/errorComponent.component';
     signinComponent,
     headerComponent,
     blogTemplateComponent,
+    AddClassesDirective,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
-  providers: [],
+  providers: [authService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

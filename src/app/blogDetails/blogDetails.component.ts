@@ -1,4 +1,13 @@
-import { Component, ElementRef, OnInit, ViewChildren } from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  ElementRef,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  ViewChild,
+  ViewChildren,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { blogDataService } from '../shared/blogData.service';
 import { blogDataInterface } from '../blogTemplate/blogTemplate.component';
@@ -28,14 +37,13 @@ export class blogDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private dataBlogService: blogDataService
   ) {}
+  @ViewChild('div') divMain: ElementRef | any;
   ngOnInit() {
-    // @ViewChildren('div') divMain:ElementRef | any
     this.route.params.subscribe((data: any) => {
       this.currentBlogId = +data.id;
       this.currentBlog = this.dataBlogService.getBlockById(
         this.currentBlogId
       )[0];
-      console.log(this.currentBlog);
     });
   }
 }
