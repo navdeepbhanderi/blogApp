@@ -11,7 +11,7 @@ import { authService } from './shared/authService.service';
 export class AppComponent implements OnInit {
   title = 'angularTest9';
   offset = 1;
-  limit = 5;
+  limit = 12;
   constructor(
     private blogDataService: blogDataService,
     private router: Router,
