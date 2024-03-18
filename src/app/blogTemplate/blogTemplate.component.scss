@@ -79,6 +79,12 @@
   }
 }
 
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .lds-ring {
   display: inline-block;
   position: relative;

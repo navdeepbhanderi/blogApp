@@ -23,6 +23,7 @@ export class blogTemplateComponent implements OnInit {
   blogInfo: blogDataInterface[] | any;
   offset = 1;
   limit = 10;
+  isLoading = true;
   constructor(private blogDataService: blogDataService) {}
 
   ngOnInit() {
@@ -33,5 +34,9 @@ export class blogTemplateComponent implements OnInit {
         this.blogInfo = this.blogDataService.blogData;
       });
     }
+
+    this.blogDataService.loadingBlogs.subscribe((data) => {
+      this.isLoading = data;
+    });
   }
 }

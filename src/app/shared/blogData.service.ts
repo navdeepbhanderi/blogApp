@@ -7,6 +7,7 @@ import { Subject, take, tap } from 'rxjs';
 export class blogDataService {
   constructor(private http: HttpClient) {}
   blogData: blogDataInterface | any;
+  loadingBlogs = new Subject<boolean>();
   dataObservable = new Subject<blogDataInterface[]>();
   getBlogData(offset: number, limit: number) {
     return this.http
