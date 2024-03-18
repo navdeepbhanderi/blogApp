@@ -14,6 +14,16 @@
     border: 1px solid rgba(0, 0, 0, 0.07);
     border-radius: 2.5rem;
     background-color: white;
+    @media only screen and (max-width: 57em) {
+      margin-top: 5.2rem;
+    }
+    @media only screen and (max-width: 24.37em) {
+      padding: 2.4rem;
+      width: 100%;
+      border-radius: 0;
+      background-color: transparent;
+      border: 0px;
+    }
   }
   &__title {
     font-size: 3.8rem;
@@ -99,9 +109,8 @@ input.ng-untouched.ng-dirty.ng-valid {
   box-sizing: border-box;
   display: block;
   position: absolute;
-  width: 18px;
-  height: 18px;
-  margin: 2px;
+  width: 1.8rem;
+  height: 1.8rem;
   border: 3px solid #fff;
   border-radius: 50%;
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;

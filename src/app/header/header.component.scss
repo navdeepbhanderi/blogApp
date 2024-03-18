@@ -7,6 +7,17 @@ header {
   justify-content: space-between;
   padding: 1rem 3.2rem;
   box-shadow: var(--header-box-shadow);
+  @media only screen and (max-width: 24.37em) {
+    height: 6.2rem;
+    padding: 1rem 2rem;
+  }
+}
+
+.logo img {
+  width: 6.2rem;
+  @media only screen and (max-width: 24.37em) {
+    width: 4.8rem;
+  }
 }
 
 .button {

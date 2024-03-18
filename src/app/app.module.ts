@@ -31,7 +31,13 @@ import { blogHomeComponent } from './blogHomeComponent/blogHomeComponent.compone
     blogTemplateComponent,
     AddClassesDirective,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+  ],
   providers: [authService],
   bootstrap: [AppComponent],
 })

@@ -2,6 +2,9 @@
   text-decoration: none;
   font-size: 1.4rem;
 }
+.container {
+  margin-top: 2.4rem;
+}
 .blogdetails {
   display: flex;
   flex-direction: column;
@@ -12,12 +15,31 @@
     margin: 3.2rem auto;
     height: 30rem;
     border-radius: 2.5rem;
+    @media only screen and (max-width: 75em) {
+      width: 80%;
+    }
+    @media only screen and (max-width: 50em) {
+      width: 90%;
+    }
+    @media only screen and (max-width: 34.5em) {
+      width: 100%;
+    }
   }
   &__title {
     margin: 3.2rem 0 0 2.4rem;
     font-size: 5.2rem;
     color: var(--text-color);
     text-align: center;
+    @media only screen and (max-width: 75em) {
+      font-size: 4.8rem;
+    }
+    @media only screen and (max-width: 57em) {
+      font-size: 4.2rem;
+    }
+    @media only screen and (max-width: 36em) {
+      font-size: 3.8rem;
+      width: 80%;
+    }
   }
 }
 

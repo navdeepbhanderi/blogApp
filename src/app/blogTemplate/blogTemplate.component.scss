@@ -3,16 +3,35 @@
   gap: 1.2rem;
   max-width: 100rem;
   margin: 0 auto;
+
+  @media only screen and (max-width: 36.66em) {
+    flex-direction: column;
+    gap: 2.4rem;
+    padding: 2.4rem 5.2rem;
+  }
+  @media only screen and (max-width: 31.25em) {
+    padding: 2rem 3.2rem;
+  }
+  @media only screen and (max-width: 25em) {
+    padding: 0.8rem 2rem;
+  }
   &__part1 {
     width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    @media only screen and (max-width: 36.66em) {
+      width: 100%;
+    }
   }
   &__img {
     width: 80%;
     height: 85%;
     border-radius: 1.2rem;
+    @media only screen and (max-width: 36.66em) {
+      height: 25rem;
+      width: 55rem;
+    }
   }
   &__part2 {
     display: flex;
@@ -20,6 +39,9 @@
     justify-content: center;
     padding: 1.2rem;
     width: 50%;
+    @media only screen and (max-width: 36.66em) {
+      width: 100%;
+    }
   }
   &__date {
     margin-bottom: 1rem;
@@ -54,5 +76,41 @@
     color: blue;
     padding-bottom: 1px;
     border-bottom: 1px solid blue;
+  }
+}
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: var(--text-color) transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

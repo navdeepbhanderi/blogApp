@@ -27,13 +27,13 @@
       </div>
       <div class="field">
         <button type="submit" [ngClass]="{'invalid':!form.valid}" class="btn btn-secondary btn--signup">
-          <span>Signin</span>
-          <span *ngIf="isLoading" class="lds-ring">
+          <div>Signin</div>
+          <div *ngIf="isLoading" class="lds-ring">
             <div></div>
             <div></div>
             <div></div>
             <div></div>
-          </span>
+          </div>
         </button>
       </div>
       <div class="field">

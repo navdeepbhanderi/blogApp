@@ -17,6 +17,12 @@ const routes: Routes = [
     component: blogComponent,
     children: [
       { path: '', canActivate: [authGuard], component: blogTemplateComponent },
+    ],
+  },
+  {
+    path: 'blogdetail',
+    canActivate: [authGuard],
+    children: [
       {
         path: ':id',
         canActivate: [authGuard],

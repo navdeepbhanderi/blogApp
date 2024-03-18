@@ -1,3 +1,9 @@
+<!-- <div class="lds-ring">
+  <div></div>
+  <div></div>
+  <div></div> 
+  <div></div>
+</div> -->
 <div class="blog" *ngFor="let blog of blogInfo">
   <div class="blog__part1">
     <img class="blog__img" [src]="blog.photo_url" alt="">
@@ -18,6 +24,6 @@
         <span>{{blog.updated_at}}</span>
       </div>
     </div>
-    <a class="blog__link" [routerLink]="[blog.user_id]">View more</a>
+    <a class="blog__link" [routerLink]="['/blogdetail',blog.user_id]">View more</a>
   </div>
 </div>

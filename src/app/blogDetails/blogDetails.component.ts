@@ -41,6 +41,8 @@ export class blogDetailsComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((data: any) => {
       this.currentBlogId = +data.id;
+      console.log(this.currentBlogId);
+
       this.currentBlog = this.dataBlogService.getBlockById(
         this.currentBlogId
       )[0];

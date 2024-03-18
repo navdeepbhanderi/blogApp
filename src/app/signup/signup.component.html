@@ -3,37 +3,55 @@
   <div class="container__form">
     <h1 class="container__title">Welcome to Ww</h1>
     <h2 class="container__title2">Signup here</h2>
-    <form #form="ngForm" (ngSubmit)="getFormData(form)">
+    <form [formGroup]="form" (ngSubmit)="getFormData()">
       <div class="field">
         <label for="fname">First Name</label>
-        <input ngModel #fname="ngModel" required placeholder="Enter your first name" type="text" name="fname"
+        <input maxlength="10" formControlName="fname" placeholder="Enter your first name" type="text" name="fname"
           id="fname">
-        <span *ngIf="!fname.valid && (fname.touched || fname.dirty)" class="error">Please enter your first name</span>
+        <span *ngIf="!form.get('fname').valid && (form.get('fname').touched || form.get('fname').dirty)"
+          class="error">Please enter your first
+          name</span>
       </div>
       <div class="field">
         <label for="lname">Last Name</label>
-        <input ngModel #lname="ngModel" required placeholder="Enter your last name" type="text" name="lname" id="lname">
-        <span *ngIf="!lname.valid && (lname.touched || lname.dirty)" class="error">Please enter your last name</span>
+        <input maxlength="10" formControlName="lname" placeholder="Enter your last name" type="text" name="lname"
+          id="lname">
+        <span *ngIf="!form.get('lname').valid && (form.get('lname').touched || form.get('lname').dirty)"
+          class="error">Please enter your last name</span>
       </div>
       <div class="field">
         <label for="email">Email address</label>
-        <input pattern="^[^ ]+@[^ ]+\.[a-z]{2,3}$" ngModel #email="ngModel" required email
-          placeholder="Enter email address" type="email" name="email" id="email">
-        <span class="error" *ngIf="!email.valid && (email.touched || email.dirty)">
-          <p *ngIf="email.errors?.['required']">Please enter your email address</p>
-          <p *ngIf="email.errors?.['pattern']">Please enter valid email address</p>
+        <input formControlName="email" placeholder="Enter email address" type="email" name="email" id="email">
+        <span class="error" *ngIf="!form.get('email').valid && (form.get('email').touched || form.get('email').dirty)">
+          <p *ngIf="form.get('email').errors?.['required']">Please enter your email address</p>
+          <p *ngIf="form.get('email').errors?.['pattern']">Please enter valid email address</p>
         </span>
       </div>
       <div class="field">
         <label for="password">Password</label>
         <div class="field__pass">
-          <input ngModel #pass="ngModel" required minlength="8" placeholder="Enter password"
-            [type]="path ? 'password' : 'text' " name="password" id="password">
+          <input placeholder="Enter password" [type]="path ? 'password' : 'text' " formControlName="password"
+            name="password" [(ngModel)]="password" id="password">
           <img (click)="checkPath()" class="eye" [src]="getPath()" />
         </div>
-        <span class="error" *ngIf="!pass.valid && (pass.touched || pass.dirty)">
-          <p *ngIf="pass.errors?.['required']">Please enter your password</p>
-          <p *ngIf="pass.errors?.['minlength']">Please enter of 8 length</p>
+        <span class="error"
+          *ngIf="!form.get('password').valid && (form.get('password').touched || form.get('password').dirty)">
+          <p *ngIf="form.get('password').errors?.['required']">Please enter your password</p>
+          <p *ngIf="form.get('password').errors?.['minlength']">Please enter of 8 length</p>
+        </span>
+      </div>
+      <div class="field">
+        <label for="cpassword">Confirm Password</label>
+        <div class="field__pass">
+          <input placeholder="Rewrite your password" #cpass formControlName="cpassword"
+            [type]="path ? 'password' : 'text' " name="cpassword" id="cpassword">
+          <img (click)="checkPath()" class="eye" [src]="getPath()" />
+        </div>
+        <span class="error"
+          *ngIf="!form.get('cpassword').valid && (form.get('cpassword').touched || form.get('cpassword').dirty)">
+          <p *ngIf="form.get('cpassword').errors?.['required']">Please enter your password</p>
+          <p *ngIf=" (cpass.value.length > 0) && (form.get('cpassword').errors?.['passNotMatch'])">Please match your
+            current password</p>
         </span>
       </div>
       <div class="field">
