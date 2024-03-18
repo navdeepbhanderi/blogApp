@@ -20,15 +20,9 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'blogdetail',
+    path: 'blogdetail/:id',
     canActivate: [authGuard],
-    children: [
-      {
-        path: ':id',
-        canActivate: [authGuard],
-        component: blogDetailsComponent,
-      },
-    ],
+    component: blogDetailsComponent,
   },
   { path: '', redirectTo: 'signup', pathMatch: 'full' },
   { path: '**', redirectTo: 'signup' },

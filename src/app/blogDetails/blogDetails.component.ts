@@ -36,7 +36,9 @@ export class blogDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private dataBlogService: blogDataService
-  ) {}
+  ) {
+    window.scrollTo(0, 0);
+  }
   @ViewChild('div') divMain: ElementRef | any;
   ngOnInit() {
     this.route.params.subscribe((data: any) => {

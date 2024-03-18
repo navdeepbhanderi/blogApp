@@ -20,12 +20,15 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.authService.autoLogin();
 
-    this.blogDataService
-      .getBlogData(this.offset, this.limit)
-      .subscribe((data: any) => {
+    this.blogDataService.getBlogData(this.offset, this.limit).subscribe(
+      (data: any) => {
         this.blogDataService.blogData = data.blogs;
         this.blogDataService.dataObservable.next(data.blogs);
-      });
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   @HostListener('window:scroll', ['$event'])
